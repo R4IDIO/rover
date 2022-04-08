@@ -1,4 +1,4 @@
-from src.Exceptions import FacingError, MoveError
+from src.Exceptions import FacingError, MoveError, InvalidTileCountError
 from src.Plateau import Plateau
 
 
@@ -11,13 +11,14 @@ class Rover:
         self.facing = facing
         self.plateau = plateau
 
-    def __move(self, tile_count: int):
+    def move(self, tile_count: int):
         """
             Private method
             Allows the rover to move forward
             :param tile_count: (int) -> Number of tiles for the rover to move
         """
-
+        if tile_count < 0:
+            raise InvalidTileCountError("Movement can't be negative!")
         if self.facing == "E":
             self.x += tile_count
         elif self.facing == "N":
@@ -29,7 +30,7 @@ class Rover:
         else:
             raise FacingError("Invalid cardinal compass value")
 
-    def __is_move_valid(self, tile_count: int):
+    def is_move_valid(self, tile_count: int):
         """
             Private method
             Used to detect if a move is valid or not
@@ -47,7 +48,7 @@ class Rover:
         else:
             raise FacingError("Invalid cardinal compass value")
 
-    def __rotate(self, direction: str):
+    def rotate(self, direction: str):
         """
             Private method
             Used to rotate the rover to left or right
@@ -71,10 +72,10 @@ class Rover:
         """
         for movement in movement_sequence:
             if movement in ["L", "R"]:
-                self.__rotate(movement)
+                self.rotate(movement)
             elif movement == "M":
-                if self.__is_move_valid(1):
-                    self.__move(1)
+                if self.is_move_valid(1):
+                    self.move(1)
                 else:
                     raise MoveError("Invalid instruction, rover would leave the plateau !")
             else:
