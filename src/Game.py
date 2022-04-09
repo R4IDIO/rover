@@ -15,7 +15,7 @@ class Game:
     def start(self):
         """
             Used to start the "game" and execute the script
-            :return: (List[str]) -> List of rover position
+        :return: (List[str]) -> List of rover position
         """
         result = []
         if self.is_valid_script(self.instructions):

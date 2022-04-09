@@ -5,7 +5,13 @@ from src.Plateau import Plateau
 class Rover:
 
     def __init__(self, x: int, y: int, facing: str, plateau: Plateau):
-
+        """
+            Initialization of the Rover object
+        :param x: (int) -> x coordinate of the rover
+        :param y: (int) -> y coordinate of the rover
+        :param facing: (str) -> orientation of the rover
+        :param plateau: (Plateau) -> plateau on which the rover evolves
+        """
         self.x = x
         self.y = y
         self.facing = facing
@@ -15,7 +21,7 @@ class Rover:
         """
             Private method
             Allows the rover to move forward
-            :param tile_count: (int) -> Number of tiles for the rover to move
+        :param tile_count: (int) -> Number of tiles for the rover to move
         """
         if tile_count < 0:
             raise InvalidTileCountError("Movement can't be negative!")
