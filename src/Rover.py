@@ -35,7 +35,7 @@ class Rover:
             Private method
             Used to detect if a move is valid or not
         :param tile_count: (int) -> Number of tiles for the rover to move
-        :return: (boolean) -> True if the move is valide, else False
+        :return: (boolean) -> True if the move is valid, else False
         """
         if self.facing == "E":
             return self.x + tile_count <= self.plateau.edge_x

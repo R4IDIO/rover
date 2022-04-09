@@ -5,12 +5,23 @@ from typing import List
 
 class Game:
 
-    def __init__(self, script):
-        instructions = script.split(" ")
-        if self.is_valid_script(instructions):
-            edge_x, edge_y = int(instructions[0]), int(instructions[1])
+    def __init__(self, script: str):
+        """
+            Initialization of the Game object
+        :param script: (str) -> Script of the game
+        """
+        self.instructions = script.upper().split(" ")
+
+    def start(self):
+        """
+            Used to start the "game" and execute the script
+            :return: (List[str]) -> List of rover position
+        """
+        result = []
+        if self.is_valid_script(self.instructions):
+            edge_x, edge_y = int(self.instructions[0]), int(self.instructions[1])
             plateau = Plateau(edge_x, edge_y)
-            instructions = instructions[2:]  # Removing plateau dimensions instructions
+            instructions = self.instructions[2:]  # Removing plateau dimensions instructions
             for i in range(0, len(instructions), 4):
                 current_instructions = instructions[i:i + 4]
                 x = int(current_instructions[0])
@@ -19,10 +30,12 @@ class Game:
                 movements = current_instructions[3]
                 rover = Rover(x, y, facing, plateau)
                 try:
-                    print(rover.commit_movement(movements))
+                    result.append(rover.commit_movement(movements))
                 except Exception as e:
                     print(e)
+                    result.append("")
                     pass
+        return result
 
     @staticmethod
     def is_valid_script(instructions: List):
