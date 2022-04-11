@@ -100,10 +100,9 @@ Example of script result :
 
 Once you have installed the requirements, you must deploy the api using a web server.
 Personally, I chose to use the ASGI web server "uvicorn".  
-Installation : `pip install uvicorn`  
 Docs : https://www.uvicorn.org/
 
-Then, at the root of the project, just run the following command: `uvicorn api:app --reload`  
+For this, at the root of the project, just run the following command: `uvicorn api:app --reload`  
 *Note that the --reload flag should not be used in production*
 
 The server will then be deployed, and you can use the api. The default port is 8000.  
