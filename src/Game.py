@@ -32,9 +32,10 @@ class Game:
                 try:
                     result.append(rover.commit_movement(movements))
                 except Exception as e:
-                    print(e)
-                    result.append("")
+                    result.append(str(e))
                     pass
+        else:
+            result.append("The dimensions of the plateau or the script are not correct.")
         return result
 
     @staticmethod

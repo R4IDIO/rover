@@ -62,19 +62,22 @@ class TestGame:
 
     def test_start_invalid_script(self):
         """
-            Used to test if there is no result while launching the "game" with an invalid script
+        Used to test if there is no result when launching the "game" with an invalid script and there is an error
+        message in return.
         """
         script = "5 A 4 3 S MML"
+        expected_output = ["The dimensions of the plateau or the script are not correct."]
         g1 = Game(script)
         result = g1.start()
-        assert len(result) == 0 and not result
+        assert result == expected_output
 
     def test_start_invalid_script_exception(self):
         """
-            Used to test if the result is empty when an exception is encountered while a rover is moving
+        Used to test if the result is empty when an exception is encountered while a rover is moving and there is an
+        error message in return.
         """
         script = "5 5 4 3 S MMMM"
-        expected_value = [""]
+        expected_value = ["Invalid instruction, rover would leave the plateau !"]
         g1 = Game(script)
         result = g1.start()
         assert len(result) == 1 and result == expected_value
@@ -84,7 +87,7 @@ class TestGame:
             Used to test if a result is obtained for each rover even if one of them has a problem while moving
         """
         script = "10 10 4 3 S MMRMMMMMMMMMM 2 2 W LM"
-        expected_value = ["", "2 1 S"]
+        expected_value = ["Invalid instruction, rover would leave the plateau !", "2 1 S"]
         g1 = Game(script)
         result = g1.start()
         assert len(result) == 2 and result == expected_value
