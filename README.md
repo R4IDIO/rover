@@ -89,11 +89,11 @@ Example of script result :
 
 ***What happens if the script is incorrect?*** 
 
-- If the plateau dimensions are incorrect, or if the script does not have enough content, the following message should be displayed : "The dimensions of the plateau or the script are not correct."
-- If any of the rover's movements are not correct the following message should be displayed: "Invalid instruction : {Error}" where {Error} is the unrecognized movement.
-- If one of the movements causes the exit of the plateau, the following message should be displayed : "Invalid instruction, rover would leave the plateau !"
+- If the plateau dimensions are incorrect, or if the script does not have enough content, the following message should be displayed : `The dimensions of the plateau or the script are not correct.`
+- If any of the rover's movements are not correct the following message should be displayed: `Invalid instruction : {Error}` where {Error} is the unrecognized movement.
+- If one of the movements causes the exit of the plateau, the following message should be displayed : `Invalid instruction, rover would leave the plateau !`
 
-*Please note that the incorrect movement of a rover does not prevent the rest of the execution of the script and therefore you will get the final location of the other rovers if their movements are correct.*
+*Please note that the incorrect movement of a rover does not prevent the rest of the execution of the script, and therefore you will get the final location of the other rovers if their movements are correct.*
 
 
 ### Deploying the api
