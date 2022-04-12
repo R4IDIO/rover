@@ -3,7 +3,6 @@ import json
 from fastapi.testclient import TestClient
 from api import app  # importing app from api.py file
 from requests.auth import HTTPBasicAuth
-from requests.models import Response
 import os
 
 
